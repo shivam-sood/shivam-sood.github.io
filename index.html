@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="myscript.js"></script> 
+        <script src="https://kit.fontawesome.com/55ab3a70f3.js" ></script>
+    </head>
+    <body>
+        <header id="header">
+            <nav class="nav">
+                <button class="toggle-menu">
+                <span></span>
+                </button>
+            </nav>
+        </header>
+
+        <div id="menu" class="">
+            <nav class="main-nav">
+                <ul>
+                <li>
+                    <a href="index.html">
+                    Home
+                    </a>
+                </li>
+                <li>
+                    <a href="sign.html">
+                    Register new device
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="#">
+                    About the project
+                    </a>
+                </li>
+                </ul>
+            </nav>
+        
+            <footer class="menu-footer">
+                <nav class="footer-nav">
+                <ul>
+                    <li>
+                    <a href="https://gitlab.com/shivam-sood/esw-39" target="_blank">
+                        <i class="fa fa-twitter fa-fw"></i>
+                        Gitlab 
+                    </a>
+                    </li>
+                    <li>
+                    <a href="#">
+                        <i class="fa fa-envelope fa-fw"></i>
+                        IIIT
+                    </a>
+                    </li>
+                </ul>
+                </nav>
+            </footer>
+        </div>
+        <!-- <div class="Click-here 0">Click Here</div>         -->
+        <div class="custom-model-main2">
+            <div class="custom-model-inner">        
+            <div class="close-btn">×</div>
+                <div class="custom-model-wrap">
+                    <div id="info" class="pop-up-content-wrap">
+                    Jsaas</div>
+                </div>  
+                
+            </div>  
+            <div class="bg-overlay"></div>
+        </div> 
+        <div class="custom-model-main">
+            <div class="custom-model-inner">        
+            <div class="close-btn">×</div>
+                <div class="custom-model-wrap">
+                    <div class="pop-up-content-wrap">
+                        
+                    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                    </div>
+                </div>  
+                
+            </div>  
+            <div class="bg-overlay"></div>
+        </div> 
+        
+    
+
+
+        <table class="container" id="tabless">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Temperature</th>
+                    <th>BP low</th>
+                    <th>BP high</th>
+                    <th>SpO<sub>2</sub></th>
+                    <th>Heart Rate</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            
+            <tbody id="table">
+             
+              
+                
+            </tbody>
+        </table>
+    </body>
+</html>
