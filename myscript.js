@@ -1,7 +1,7 @@
 
 var interv;
 var prev = {};
-alert("hello");
+// alert("hello");
 $(document).ready(function () {
     var xValues = [];
     var yValues = [];
@@ -89,7 +89,7 @@ $(document).ready(function () {
             
           }
         };
-        console.log(esw[k]["thing"], k);
+        // console.log(esw[k]["thing"], k);
         xhttp.open("GET", esw[k]["thing"], false);
         xhttp.send();
             
@@ -99,7 +99,7 @@ $(document).ready(function () {
     
     
     $(".close-btn, .bg-overlay").click(function () {
-        console.log("SA");
+        // console.log("SA");
       $(".custom-model-main").removeClass("model-open");
       $(".custom-model-main2").removeClass("model-open2");
     //   chart.destroy();
@@ -111,7 +111,7 @@ $(document).ready(function () {
       clearInterval(interv);
   });
   $(".toggle-menu").click(function () {
-    alert("HELLo");
+    // alert("HELLo");
     $(this).toggleClass("active");
     $("#menu").toggleClass("open");
   });
@@ -119,7 +119,7 @@ $(document).ready(function () {
     
     setInterval(() => {
         var rows = $("#table").find("tr");
-        console.log(rows.length);
+        // console.log(rows.length);
         for (var i = 0; i < rows.length; i++) {
             var cols = $(rows[i]).find("td");
             var xhttp = new XMLHttpRequest();
@@ -153,7 +153,7 @@ $(document).ready(function () {
                     cols[6].firstChild.innerHTML = js["feeds"][0]["field6"];
                     cols[6].firstChild.href =
                       "https://maps.google.com/?q=" + js["feeds"][0]["field6"];
-                    console.log(cols[6]);
+                    // console.log(cols[6]);
                   }
                   else
                   {
@@ -166,7 +166,7 @@ $(document).ready(function () {
                     prev[i][j-1].shift();
                   }
                 }
-                console.log(js["feeds"][0]["field7"], js["feeds"][0]["field7"] == 1);
+                // console.log(js["feeds"][0]["field7"], js["feeds"][0]["field7"] == 1);
                 
                   
                 // cols[7].
@@ -196,7 +196,7 @@ $(document).ready(function () {
         if (this.cellIndex == 0)
         { 
             $(".custom-model-main2").addClass("model-open2");
-            console.log(this.innerHTML);
+            // console.log(this.innerHTML);
             document.getElementById("info").innerHTML = `
             Name: ${esw[this.innerHTML]["name"]}<br>
             Age:${esw[this.innerHTML]["age"]}<br>
@@ -204,7 +204,7 @@ $(document).ready(function () {
             Job:${esw[this.innerHTML]["job"]}<br>
             Thingspeak url:${esw[this.innerHTML]["thing"]}<br>
             `;
-            console.log($("#info"));
+            // console.log($("#info"));
             // return;
         }
         else
@@ -219,11 +219,11 @@ $(document).ready(function () {
               for (var i = 0; i < prev[this.parentElement.cells[0].innerHTML][this.cellIndex - 1].length; i++) {
 
                 chart.data.labels.push(i * 15);
-                console.log(
-                  prev[this.parentElement.cells[0].innerHTML][
-                    this.cellIndex - 1
-                  ]
-                );
+                // console.log(
+                //   prev[this.parentElement.cells[0].innerHTML][
+                //     this.cellIndex - 1
+                //   ]
+                // );
                 chart.data.datasets.forEach((dataset) => {
                   dataset.data.push(
                     prev[this.parentElement.cells[0].innerHTML][
@@ -235,7 +235,7 @@ $(document).ready(function () {
               }
               chart.update();
             // });
-      console.log(this);
+      // console.log(this);
          interv = setInterval(() => {
       fetch(esw[this.parentElement.cells[0].innerHTML]["thing"])
         .then((response) => response.json())
