@@ -1,365 +1,516 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-        <!-- <script src="myscript.js"></script>  -->
-        <script>
-          $(document).ready(function () {
- $(".toggle-menu").click(function () {
-    $(this).toggleClass("active");
-    $("#menu").toggleClass("open");
-  });
-  $("#go").click(function () {
-      go(50);
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script> var database;
+  var set1;var ref1;var onValue1;var push1;</script>
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  import { getDatabase, ref, set, onValue,push } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyCRXLJ5-BmfWBjM9DzM9-G3n6INGC2IuG4",
+
+    authDomain: "esw-39.firebaseapp.com",
+
+    databaseURL: "https://esw-39-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId: "esw-39",
+
+    storageBucket: "esw-39.appspot.com",
+
+    messagingSenderId: "330747783808",
+
+    appId: "1:330747783808:web:80af037e85c22b9dacd465",
+
+    measurementId: "G-8S3HYHNFZF"
+
+  };
+
+  // ref = ref;
+
+  // Initialize Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+  const analytics = getAnalytics(app);
+
+  database = getDatabase(app);
+  ref1 = ref;
+  set1 = set;
+  push1 = push;
+  onValue1 = onValue;
+  // const db = getDatabase();
+
+    
+
+  </script> 
+  <script>
+    // console.log(app);
+    //  import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+    $(document).ready(function () {
+  //     function sub()
+  // {
+    // const db = getDatabase();
+
+  //   set1(ref1(database, 'esw/' + 1), {
+    // name: $("#name").val(),
+    //       job: $("#job").val(),
+    //       age: $("#age").val(),
+    //       thing: $("#thing").val(),
+    //       gender: $('input[name="gender"]:checked')[0].id,
+  //         // user_id: parseInt(Object.keys(esw)[Object.keys(esw).length - 1]) + 1,
+  // });
+  // }
+  // var r = ref1(database).push({
+    // console.log(ref1(database));
+    // set1(push1(ref1(database,'esw')),{
+    //   name: $("#name").val(),
+    //       job: $("#job").val(),
+    //       age: $("#age").val(),
+    //       thing: $("#thing").val(),
+    //       gender: $('input[name="gender"]:checked')[0].id,
+    // });
+  //   name: $("#name").val(),
+  //         job: $("#job").val(),
+  //         age: $("#age").val(),
+  //         thing: $("#thing").val(),
+  //         gender: $('input[name="gender"]:checked')[0].id,
+  //         // user_id: parseInt(Object.keys(esw)[Object.keys(esw).length - 1]) + 1,
+  // });
+  // console.log(database);
+  // $(document).ready(function () {
+     
+  // } 
+  //   });});
+  
+
+  // const database = firebase.database();
+  // console.log(db);
+  // function submit() {
+    
+  //   console.log("Submitted");
+  //     sub();
+      
+  // const db = getDatabase();
+          // name: $("#name").val(),
+          // job: $("#job").val(),
+          // age: $("#age").val(),
+          // thing: $("#thing").val(),
+          // gender: $('input[name="gender"]:checked')[0].id,
+          // user_id: parseInt(Object.keys(esw)[Object.keys(esw).length - 1]) + 1,
+  
+
+  // }
+     
+      $(".toggle-menu2").click(function () {
+      // alert("HELLo");
+      $(".toggle-menu").toggleClass("active");
+      $("#menu").toggleClass("open");
     });
-    $("#ok").click(function () {
-      go(500);
-    });
+      $(".toggle-menu").click(function () {
+        $(this).toggleClass("active");
+        $("#menu").toggleClass("open");
+      });
+      $("#go").click(function () {
+        go(50);
+      });
+      $("#ok").click(function () {
+        go(500);
+      });
+      // $(".button").click(function () {
+      // // alert("HELLo");
+      // submit();});
+      function go(nr) {
+        $(".bb").fadeToggle(200);
+        $(".message").toggleClass("comein");
+        $(".check").toggleClass("scaledown");
+        $("#go").fadeToggle(nr);
+      }
+
+
+    })
+
     function go(nr) {
       $(".bb").fadeToggle(200);
       $(".message").toggleClass("comein");
       $(".check").toggleClass("scaledown");
       $("#go").fadeToggle(nr);
     }
+    // Import the functions you need from the SDKs you need
 
-
-          })
-          
-    function go(nr) {
-  $(".bb").fadeToggle(200);
-  $(".message").toggleClass("comein");
-  $(".check").toggleClass("scaledown");
-  $("#go").fadeToggle(nr);
-}
-
-function submit() {
   
-    console.log("Submitted");
-    
-    if (localStorage.getItem("esw") == null)
-    {
-        var user = {
-          name: $("#name").val(),
+
+    function submit() {
+
+      console.log("Submitted");
+      // console.log(database);
+      // if (localStorage.getItem("esw") == null) {
+      //   // console.log("SA");
+      //   var user = {
+      //     name: $("#name").val(),
+      //     job: $("#job").val(),
+      //     age: $("#age").val(),
+      //     thing: $("#thing").val(),
+      //     gender: $('input[name="gender"]:checked')[0].id,
+      //     user_id: 0,
+      //   };
+      //   var esw = {
+      //     0: user
+      //   }
+      //   localStorage.setItem("esw", JSON.stringify(esw));
+      // }
+      // else {
+      //   localStorage.getItem("esw");
+      //   var esw = JSON.parse(localStorage.getItem("esw"));
+      //   var user = {
+      //     name: $("#name").val(),
+      //     job: $("#job").val(),
+      //     age: $("#age").val(),
+      //     thing: $("#thing").val(),
+      //     gender: $('input[name="gender"]:checked')[0].id,
+      //     user_id: parseInt(Object.keys(esw)[Object.keys(esw).length - 1]) + 1,
+      //   };
+      //   esw[parseInt(Object.keys(esw)[Object.keys(esw).length - 1]) + 1] = user;
+      //   localStorage.setItem("esw", JSON.stringify(esw));
+      // }
+      set1(push1(ref1(database,'esw')),{
+      name: $("#name").val(),
           job: $("#job").val(),
           age: $("#age").val(),
           thing: $("#thing").val(),
-        };
-        var esw = {
-            0: user
-        }
-        localStorage.setItem("esw", JSON.stringify(esw));
+          gender: $('input[name="gender"]:checked')[0].id,
+    });
+      $("#name").val("");
+      $("#age").val("");
+      $("#job").val("");
+      $("#male").prop("checked", true);
+      $("#thing").val("");
+      go(500);
+      return 0;
     }
-    else
-    {
-        var esw = JSON.parse(localStorage.getItem("esw"));
-        var user = {
-          name: $("#name").val(),
-          job: $("#job").val(),
-          age: $("#age").val(),
-          thing: $("#thing").val(),
-        };
-        esw[parseInt(Object.keys(esw)[Object.keys(esw).length - 1]) + 1] = user;
-        localStorage.setItem("esw", JSON.stringify(esw));
+
+
+  </script>
+  
+  
+  <script src="https://kit.fontawesome.com/55ab3a70f3.js"></script>
+  <style>
+    ol,
+    ul,
+    li {
+      list-style: none
     }
-    $("#name").val("");
-  $("#age").val("");
-  $("#job").val("");
-  $("#male").prop("checked", true);
-  $("#thing").val("");
-  go(500);
-  return 0;
-}
 
+    :focus {
+      outline: none
+    }
 
-        </script>
-        <script src="https://kit.fontawesome.com/55ab3a70f3.js" ></script>
-        <style>
-          
-ol, ul, li {list-style:none}
+    body,
+    input,
+    textarea,
+    select {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      color: #4c4c4c;
+    }
 
-:focus {outline:none}
+    p {
+      font-size: 12px;
+      width: 150px;
+      display: inline-block;
+      margin-left: 18px;
+    }
 
-body,
-input,
-textarea,
-select {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  color: #4c4c4c;
-}
+    h1 {
+      font-size: 32px;
+      font-weight: 300;
+      color: #4c4c4c;
+      text-align: center;
+      padding-top: 10px;
+      margin-bottom: 10px;
+    }
 
-p {
-  font-size: 12px;
-  width: 150px;
-  display: inline-block;
-  margin-left: 18px;
-}
-h1 {
-  font-size: 32px;
-  font-weight: 300;
-  color: #4c4c4c;
-  text-align: center;
-  padding-top: 10px;
-  margin-bottom: 10px;
-}
+    html {
+      background-color: #ffffff;
+    }
 
-html{
-  background-color: #ffffff;
-}
+    .testbox {
+      margin: 20px auto;
+      width: 343px;
+      height: 464px;
+      -webkit-border-radius: 8px/7px;
+      -moz-border-radius: 8px/7px;
+      border-radius: 8px/7px;
+      background-color: #ebebeb;
+      -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, .31);
+      -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, .31);
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, .31);
+      border: solid 1px #cbc9c9;
+    }
 
-.testbox {
-  margin: 20px auto;
-  width: 343px; 
-  height: 464px; 
-  -webkit-border-radius: 8px/7px; 
-  -moz-border-radius: 8px/7px; 
-  border-radius: 8px/7px; 
-  background-color: #ebebeb; 
-  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
-  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
-  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
-  border: solid 1px #cbc9c9;
-}
+    input[type=radio] {
+      visibility: hidden;
+    }
 
-input[type=radio] {
-  visibility: hidden;
-}
+    form {
+      margin: 0 30px;
+    }
 
-form{
-  margin: 0 30px;
-}
+    label.radio {
+      cursor: pointer;
+      text-indent: 35px;
+      overflow: visible;
+      display: inline-block;
+      position: relative;
+      margin-bottom: 15px;
+    }
 
-label.radio {
-	cursor: pointer;
-  text-indent: 35px;
-  overflow: visible;
-  display: inline-block;
-  position: relative;
-  margin-bottom: 15px;
-}
+    label.radio:before {
+      background: #3a57af;
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+    }
 
-label.radio:before {
-  background: #3a57af;
-  content:'';
-  position: absolute;
-  top:2px;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-}
+    label.radio:after {
+      opacity: 0;
+      content: '';
+      position: absolute;
+      width: 0.5em;
+      height: 0.25em;
+      background: transparent;
+      top: 7.5px;
+      left: 4.5px;
+      border: 3px solid #ffffff;
+      border-top: none;
+      border-right: none;
 
-label.radio:after {
-	opacity: 0;
-	content: '';
-	position: absolute;
-	width: 0.5em;
-	height: 0.25em;
-	background: transparent;
-	top: 7.5px;
-	left: 4.5px;
-	border: 3px solid #ffffff;
-	border-top: none;
-	border-right: none;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
 
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-	transform: rotate(-45deg);
-}
+    input[type=radio]:checked+label:after {
+      opacity: 1;
+    }
 
-input[type=radio]:checked + label:after {
-	opacity: 1;
-}
+    hr {
+      color: #a9a9a9;
+      opacity: 0.3;
+    }
 
-hr{
-  color: #a9a9a9;
-  opacity: 0.3;
-}
+    input[type=text],
+    input[type=password] {
+      width: 200px;
+      height: 39px;
+      -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
+      -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px;
+      border-radius: 0px 4px 4px 0px/5px 5px 4px 4px;
+      background-color: #fff;
+      -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+      -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+      border: solid 1px #cbc9c9;
+      margin-left: -5px;
+      margin-top: 13px;
+      padding-left: 10px;
+    }
 
-input[type=text],input[type=password]{
-  width: 200px; 
-  height: 39px; 
-  -webkit-border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
-  -moz-border-radius: 0px 4px 4px 0px/0px 0px 4px 4px; 
-  border-radius: 0px 4px 4px 0px/5px 5px 4px 4px; 
-  background-color: #fff; 
-  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-  border: solid 1px #cbc9c9;
-  margin-left: -5px;
-  margin-top: 13px; 
-  padding-left: 10px;
-}
+    input[type=password] {
+      margin-bottom: 25px;
+    }
 
-input[type=password]{
-  margin-bottom: 25px;
-}
+    #icon {
+      display: inline-block;
+      width: 30px;
+      background-color: #3a57af;
+      padding: 8px 0px 8px 15px;
+      margin-left: 15px;
+      -webkit-border-radius: 4px 0px 0px 4px;
+      -moz-border-radius: 4px 0px 0px 4px;
+      border-radius: 4px 0px 0px 4px;
+      color: white;
+      -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+      -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+      box-shadow: 1px 2px 5px rgba(0, 0, 0, .09);
+      border: solid 0px #cbc9c9;
+    }
 
-#icon {
-  display: inline-block;
-  width: 30px;
-  background-color: #3a57af;
-  padding: 8px 0px 8px 15px;
-  margin-left: 15px;
-  -webkit-border-radius: 4px 0px 0px 4px; 
-  -moz-border-radius: 4px 0px 0px 4px; 
-  border-radius: 4px 0px 0px 4px;
-  color: white;
-  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-  border: solid 0px #cbc9c9;
-}
+    .gender {
+      margin-left: 30px;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
 
-.gender {
-  margin-left: 30px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
+    .accounttype {
+      margin-left: 8px;
+      margin-top: 20px;
+    }
 
-.accounttype{
-  margin-left: 8px;
-  margin-top: 20px;
-}
+    a.button {
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      padding: 6px 25px 0px 20px;
+      margin: 10px 8px 20px 0px;
+      display: inline-block;
+      /* float: ce; */
+      margin-left: 100px;
+      text-decoration: none;
+      width: 50px;
+      height: 27px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      background-color: #3a57af;
+      -webkit-box-shadow: 0 3px rgba(58, 87, 175, .75);
+      -moz-box-shadow: 0 3px rgba(58, 87, 175, .75);
+      box-shadow: 0 3px rgba(58, 87, 175, .75);
+      transition: all 0.1s linear 0s;
+      top: 0px;
+      position: relative;
+    }
 
-a.button {
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  padding: 6px 25px 0px 20px;
-  margin: 10px 8px 20px 0px;
-  display: inline-block;
-  /* float: ce; */
-  margin-left: 100px;
-  text-decoration: none;
-  width: 50px; height: 27px; 
-  -webkit-border-radius: 5px; 
-  -moz-border-radius: 5px; 
-  border-radius: 5px; 
-  background-color: #3a57af; 
-  -webkit-box-shadow: 0 3px rgba(58,87,175,.75); 
-  -moz-box-shadow: 0 3px rgba(58,87,175,.75); 
-  box-shadow: 0 3px rgba(58,87,175,.75);
-  transition: all 0.1s linear 0s; 
-  top: 0px;
-  position: relative;
-}
+    a.button:hover {
+      top: 3px;
+      background-color: #2e458b;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
 
-a.button:hover {
-  top: 3px;
-  background-color:#2e458b;
-  -webkit-box-shadow: none; 
-  -moz-box-shadow: none; 
-  box-shadow: none;
-  
-}
-            
+    }
+  </style>
+</head>
 
-
-        </style>
-    </head>
-    <body>
-        <header id="header">
-  <nav class="nav">
-    <button class="toggle-menu">
-      <span></span>
-    </button>
-  </nav>
-</header>
-
-<div id="menu" class="">
-  <nav class="main-nav">
-    <ul>
-      <li>
-        <a href="index.html">
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          Register new device
-        </a>
-      </li>
-      
-      <li>
-        <a href="#">
-          About the project
-        </a>
-      </li>
-    </ul>
-  </nav>
-  
-  <footer class="menu-footer">
-    <nav class="footer-nav">
-      <ul>
-        <li>
-          <a href="https://gitlab.com/shivam-sood/esw-39" target="_blank">
-            <i class="fa fa-twitter fa-fw"></i>
-            Gitlab 
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-envelope fa-fw"></i>
-            IIIT
-          </a>
-        </li>
-      </ul>
+<body>
+  <header id="header">
+    <nav class="nav">
+      <button class="toggle-menu">
+        <span></span>
+      </button>
     </nav>
-  </footer>
-</div>
+  </header>
+
+  <div id="menu" class="">
+            <nav class="main-nav">
+                <ul>
+                <li>
+                    <a href="index.html">
+                        
+                    Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                    <div class="toggle-menu2">Register New device</div>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="#">
+                    About the project
+                    </a>
+                </li>
+                </ul>
+            </nav>
+        
+            <footer class="menu-footer">
+                <nav class="footer-nav">
+                <ul>
+                    <li>
+                    <a href="https://gitlab.com/shivam-sood/esw-39" target="_blank">
+                        <i class="fa-brands fa-gitlab"></i>
+                        Gitlab 
+                    </a>
+                    </li>
+                    <li>
+                    <a href="https://iiit.ac.in">
+                        <i class="fa fa-envelope fa-fw"></i>
+                        IIIT
+                    </a>
+                    </li>
+                </ul>
+                </nav>
+            </footer>
+        </div>
 
 
 
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet'
+    type='text/css'>
 
-<div class="testbox">
-  <h1>Registration</h1>
+    
+  <div class="testbox">
+    <h1>Registration</h1>
 
-  <form action="/">
-  
-  
-  <label id="icon" for="name"><i class="fa-solid fa-user"></i></label>
-  <input type="text" name="name" id="name" placeholder="Name" required/>
-  <label id="icon" for="age"><i class="fa fa-birthday-cake" aria-hidden="true"></i></label>
-  <input type="text" name="age" id="age" placeholder="Age" required/>
-  <label id="icon" for="job"><i class="fa-solid fa-briefcase"></i></label>
-  <input type="text" name="job" id="job" placeholder="Designation" required/>
+    <form action="/">
 
-  <label id="icon" for="thing"><i class="fa-solid fa-link"></i></label>
-  <input type="text" name="thing" id="thing" placeholder="Thingspeak url" required/>
-   
 
-  <div class="gender">
-    <input type="radio" value="None" id="male" name="gender" checked/>
-    <label for="male" class="radio" chec>Male</label>
-    <input type="radio" value="None" id="female" name="gender" />
-    <label for="female" class="radio">Female</label>
-   </div> 
-  <a href="#" class="button" onclick="submit()">Register</a>
-   
-  </form>
-</div>
+      <label id="icon" for="name"><i class="fa-solid fa-user"></i></label>
+      <input type="text" name="name" id="name" placeholder="Name" required />
+      <label id="icon" for="age"><i class="fa fa-birthday-cake" aria-hidden="true"></i></label>
+      <input type="text" name="age" id="age" placeholder="Age" required />
+      <label id="icon" for="job"><i class="fa-solid fa-briefcase"></i></label>
+      <input type="text" name="job" id="job" placeholder="Designation" required />
 
-<div class='message'>
-  <div class='check'>
-    &#10004;
+      <label id="icon" for="thing"><i class="fa-solid fa-link"></i></label>
+      <input type="text" name="thing" id="thing" placeholder="Thingspeak url" required />
+
+
+      <div class="gender">
+        <input type="radio" value="None" id="male" name="gender" checked />
+        <label for="male" class="radio" chec>Male</label>
+        <input type="radio" value="None" id="female" name="gender" />
+        <label for="female" class="radio">Female</label>
+      </div>
+      <a href="#" class="button" onclick="submit()">Register</a>
+
+    </form>
   </div>
-  <p>
-    Success
-  </p>
-  <p>
-    Your device is Registered. Go to Home to monitor.
-  </p>
-  <button id='ok'>
-    OK
-  </button>
-</div>
 
-    </body>
+  <div class='message'>
+    <div class='check'>
+      &#10004;
+    </div>
+    <p>
+      Success
+    </p>
+    <p>
+      Your device is Registered. Go to Home to monitor.
+    </p>
+    <button id='ok'>
+      OK
+    </button>
+  </div>
+
+
+<script >
+
+  
+</script>
+
+</body>
+
 </html>

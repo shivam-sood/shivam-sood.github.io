@@ -4,8 +4,64 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-        <script src="myscript.js"></script> 
+        <script src="myscript.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
         <script src="https://kit.fontawesome.com/55ab3a70f3.js" ></script>
+        <script> var database;
+  var set1;var ref1;var onValue1;var push1;</script>
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+  import { getDatabase, ref, set, onValue,push } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+
+  // Your web app's Firebase configuration
+
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyCRXLJ5-BmfWBjM9DzM9-G3n6INGC2IuG4",
+
+    authDomain: "esw-39.firebaseapp.com",
+
+    databaseURL: "https://esw-39-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+    projectId: "esw-39",
+
+    storageBucket: "esw-39.appspot.com",
+
+    messagingSenderId: "330747783808",
+
+    appId: "1:330747783808:web:80af037e85c22b9dacd465",
+
+    measurementId: "G-8S3HYHNFZF"
+
+  };
+
+  // ref = ref;
+
+  // Initialize Firebase
+
+  const app = initializeApp(firebaseConfig);
+
+  const analytics = getAnalytics(app);
+
+  database = getDatabase(app);
+  ref1 = ref;
+  set1 = set;
+  push1 = push;
+  onValue1 = onValue;
+  // const db = getDatabase();
+
+    
+
+  </script> 
     </head>
     <body>
         <header id="header">
@@ -20,8 +76,9 @@
             <nav class="main-nav">
                 <ul>
                 <li>
-                    <a href="index.html">
-                    Home
+                    <a href="#">
+                        <div class="toggle-menu2">Home</div>
+                    
                     </a>
                 </li>
                 <li>
@@ -43,12 +100,12 @@
                 <ul>
                     <li>
                     <a href="https://gitlab.com/shivam-sood/esw-39" target="_blank">
-                        <i class="fa fa-twitter fa-fw"></i>
+                        <i class="fa-brands fa-gitlab"></i>
                         Gitlab 
                     </a>
                     </li>
                     <li>
-                    <a href="#">
+                    <a href="https://iiit.ac.in">
                         <i class="fa fa-envelope fa-fw"></i>
                         IIIT
                     </a>
@@ -63,7 +120,7 @@
             <div class="close-btn">×</div>
                 <div class="custom-model-wrap">
                     <div id="info" class="pop-up-content-wrap">
-                    Jsaas</div>
+                    </div>
                 </div>  
                 
             </div>  
