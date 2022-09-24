@@ -83,7 +83,7 @@ $(document).ready(function () {
                     
                   `;
 
-          if (js["feeds"].at(-1)["field7"] == 1) {
+          if (js["feeds"].at(-1)["field7"] == 2) {
             txt += `
              <td class='Click-here' style="color:yellow">ADL Fall</td> 
                     </tr>
@@ -109,7 +109,7 @@ $(document).ready(function () {
                    
                     `;
           } else {
-            if (js["feeds"].at(-1)["field7"] == 2) {
+            if (js["feeds"].at(-1)["field7"] == 0) {
               txt += `
                <td class='Click-here' style="color:red">Fall</td> 
                       </tr>
@@ -139,7 +139,8 @@ $(document).ready(function () {
               //
               //
               ///
-            } else {
+            }
+            else {
               txt += `
                         
                         <td class='Click-here' style="color:aquamarine">ADL</td> 
@@ -229,15 +230,15 @@ $(document).ready(function () {
 
 
             if (j == 7) {
-              if (js["feeds"].at(-1)["field7"] == "1") {
+              if (js["feeds"].at(-1)["field7"] == "2") {
                 cols[7].innerText = "ADL Fall";
                 cols[7].attributes.style.value = `color:yellow`;
-              } else if (js["feeds"].at(-1)["field7"] == "2") {
+              } else if (js["feeds"].at(-1)["field7"] == "0") {
                 cols[7].innerText = "Fall";
                 cols[7].attributes.style.value = `color:red`;
               } else {
-                cols[7].innerText = "ADL";
-                cols[7].attributes.style.value = `color:aquamarine`;
+                // cols[7].innerText = "ADL";
+                // cols[7].attributes.style.value = `color:aquamarine`;
               }
             }
             else if (j == 6) {
