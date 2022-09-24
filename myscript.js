@@ -39,35 +39,33 @@ $(document).ready(function () {
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           js = JSON.parse(xhttp.responseText);
-          // try {
-          //   for (var j = 1; j <= 7; j++)
-          //     test = js["feeds"]
-          //       .at(-1)
-          //     ["field" + j].slice(2, -1)
-          //       .replace(/ /g, "+");
-          //   var key = "MySecretKeyesw39";
+          
+            for (var j = 1; j <= 7; j++){
+              try {
+                test = js["feeds"]
+                  .at(-1)
+                  ["field" + j].slice(2, -1)
+                  .replace(/ /g, "+");
+                var key = "MySecretKeyesw39";
 
-          //   var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
-            
-          //   test = test.substring(24);
+                var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
-          //   key = CryptoJS.enc.Utf8.parse(key);
-          //   var decrypted = CryptoJS.AES.decrypt(test, key, {
-          //     iv: iv,
-          //     mode: CryptoJS.mode.CBC,
-          //   });
-          //   js["feeds"].at(-1)["field" + j] = decrypted = decrypted.toString(
-          //     CryptoJS.enc.Utf8
-          //   );
+                test = test.substring(24);
 
-          // }
-          // catch (err)
-          // {
+                key = CryptoJS.enc.Utf8.parse(key);
+                var decrypted = CryptoJS.AES.decrypt(test, key, {
+                  iv: iv,
+                  mode: CryptoJS.mode.CBC,
+                });
+                js["feeds"].at(-1)["field" + j] = decrypted =
+                  decrypted.toString(CryptoJS.enc.Utf8);
+              } catch (err) {
+              } finally {
+              }
 
-          // }
-          // finally {
-            
-          // }
+          }
+          
+          
 
           txt += `
                   <tr>
@@ -85,16 +83,54 @@ $(document).ready(function () {
 
           if (js["feeds"].at(-1)["field7"] == 1) {
             txt += `
-                    
-                    <td class='Click-here' style="color:yellow">ADL Fall</td> 
+             <td class='Click-here' style="color:yellow">ADL Fall</td> 
                     </tr>
+                    <div class="callout">
+
+                      <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
+
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+                        <div class="callout-container">
+
+                          <p>An ADL Fall of User: ${k} has been detected at <a href="https://maps.google.com/?q=${js["feeds"][0]["field6"]}">Location</a> at <span id='datetime'></span>.</p>
+
+                          <script>
+                              var dt = new Date();
+                              document.getElementById('datetime').innerHTML += dt.getDate() + "\" + dt.getMonth() + "\" + dt.getYear() + "  " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() ;
+                          </script>
+
+                        </div>
+
+                      </div>
+                    </div>
+                   
                     `;
           } else {
             if (js["feeds"].at(-1)["field7"] == 2) {
               txt += `
-                      
-                      <td class='Click-here' style="color:red">Fall</td> 
+               <td class='Click-here' style="color:red">Fall</td> 
                       </tr>
+                      <div class="callout">
+
+                      <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
+
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+                        <div class="callout-container">
+
+                          <p>An Fall of User: ${k} has been detected at <a href="https://maps.google.com/?q=${js["feeds"][0]["field6"]}">Location</a> at <span id='datetime'></span>.</p>
+
+                          <script>
+                              var dt = new Date();
+                              document.getElementById('datetime').innerHTML += dt.getDate() + "\" + dt.getMonth() + "\" + dt.getYear() + "  " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() ;
+                          </script>
+
+                        </div>
+
+                      </div>
+                    </div>
+                     
                       
                       `;
               //need to add notification
@@ -165,16 +201,12 @@ $(document).ready(function () {
           // cols[2].innerText = js["feeds"].at(-1)["field2"];
           // cols[3].innerText = js["feeds"].at(-1)["field3"];
           for (var j = 1; j <= 7; j++) {
-            test = js["feeds"].at(-1)["field" + j].slice(2, -1).replace(/ /g, "+");
+            try {
+              test = js["feeds"].at(-1)["field" + j].slice(2, -1).replace(/ /g, "+");
             var key = "MySecretKeyesw39";
 
             var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
-            // var iv = CryptoJS.enc.Utf8.parse(
-            //   "d\xae\xf2\x02\xb8\xae>\x0f\xe6f\xe2\x80\xdc\xb1e\xd4"
-            // );
 
-            // console.log(j,test.substring(0, 24), test.substring(24));
-            // console.log(j, atob(test.substring(0, 24)), test.substring(24),iv);
             test = test.substring(24);
 
             key = CryptoJS.enc.Utf8.parse(key);
@@ -185,7 +217,10 @@ $(document).ready(function () {
             js["feeds"].at(-1)["field" + j] = decrypted = decrypted.toString(
               CryptoJS.enc.Utf8
             );
-            // console.log(decrypted);
+            }
+            catch (err) { }
+            finally {}
+            
           }
           for (var j = 1; j <= 7; j++) {
             // console.log(cols[j]);
