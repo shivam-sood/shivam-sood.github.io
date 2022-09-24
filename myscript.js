@@ -39,33 +39,35 @@ $(document).ready(function () {
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           js = JSON.parse(xhttp.responseText);
+          // try {
+          //   for (var j = 1; j <= 7; j++)
+          //     test = js["feeds"]
+          //       .at(-1)
+          //     ["field" + j].slice(2, -1)
+          //       .replace(/ /g, "+");
+          //   var key = "MySecretKeyesw39";
 
-          for (var j = 1; j <= 7; j++) {
-            test = js["feeds"]
-              .at(-1)
-              ["field" + j].slice(2, -1)
-              .replace(/ /g, "+");
-            var key = "MySecretKeyesw39";
+          //   var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
+            
+          //   test = test.substring(24);
 
-            var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
-            // var iv = CryptoJS.enc.Utf8.parse(
-            //   "d\xae\xf2\x02\xb8\xae>\x0f\xe6f\xe2\x80\xdc\xb1e\xd4"
-            // );
+          //   key = CryptoJS.enc.Utf8.parse(key);
+          //   var decrypted = CryptoJS.AES.decrypt(test, key, {
+          //     iv: iv,
+          //     mode: CryptoJS.mode.CBC,
+          //   });
+          //   js["feeds"].at(-1)["field" + j] = decrypted = decrypted.toString(
+          //     CryptoJS.enc.Utf8
+          //   );
 
-            // console.log(j,test.substring(0, 24), test.substring(24));
-            // console.log(j, atob(test.substring(0, 24)), test.substring(24),iv);
-            test = test.substring(24);
+          // }
+          // catch (err)
+          // {
 
-            key = CryptoJS.enc.Utf8.parse(key);
-            var decrypted = CryptoJS.AES.decrypt(test, key, {
-              iv: iv,
-              mode: CryptoJS.mode.CBC,
-            });
-            js["feeds"].at(-1)["field" + j] = decrypted = decrypted.toString(
-              CryptoJS.enc.Utf8
-            );
-            // console.log(j,key,decrypted);
-          }
+          // }
+          // finally {
+            
+          // }
 
           txt += `
                   <tr>
