@@ -45,7 +45,7 @@ $(document).ready(function () {
               .at(-1)
               ["field" + j].slice(2, -1)
               .replace(/ /g, "+");
-            var key = "OurSecretKeyesw1";
+            var key = "MySecretKeyesw39";
 
             var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
             // var iv = CryptoJS.enc.Utf8.parse(
@@ -164,7 +164,7 @@ $(document).ready(function () {
           // cols[3].innerText = js["feeds"].at(-1)["field3"];
           for (var j = 1; j <= 7; j++) {
             test = js["feeds"].at(-1)["field" + j].slice(2, -1).replace(/ /g, "+");
-            var key = "OurSecretKeyesw1";
+            var key = "MySecretKeyesw39";
 
             var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
             // var iv = CryptoJS.enc.Utf8.parse(
@@ -299,7 +299,7 @@ $(document).ready(function () {
             test = data["feeds"].at(-1)["field" + +this.cellIndex]
               .slice(2, -1)
               .replace(/ /g, "+");
-            var key = "OurSecretKeyesw1";
+            var key = "MySecretKeyesw39";
 
             var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
             // var iv = CryptoJS.enc.Utf8.parse(
