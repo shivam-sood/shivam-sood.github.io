@@ -41,27 +41,29 @@ $(document).ready(function () {
           js = JSON.parse(xhttp.responseText);
           
             for (var j = 1; j <= 7; j++){
-              try {
-                test = js["feeds"]
-                  .at(-1)
-                  ["field" + j].slice(2, -1)
-                  .replace(/ /g, "+");
-                var key = "MySecretKeyesw39";
+              // try {
+              //   test = js["feeds"]
+              //     .at(-1)
+              //     ["field" + j].slice(2, -1)
+              //     .replace(/ /g, "+");
+              //   var key = "MySecretKeyesw39";
+              //   console.log(k,test);
+              //   var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
-                var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
+              //   test = test.substring(24);
 
-                test = test.substring(24);
-
-                key = CryptoJS.enc.Utf8.parse(key);
-                var decrypted = CryptoJS.AES.decrypt(test, key, {
-                  iv: iv,
-                  mode: CryptoJS.mode.CBC,
-                });
-                js["feeds"].at(-1)["field" + j] = decrypted =
-                  decrypted.toString(CryptoJS.enc.Utf8);
-              } catch (err) {
-              } finally {
-              }
+              //   key = CryptoJS.enc.Utf8.parse(key);
+              //   var decrypted = CryptoJS.AES.decrypt(test, key, {
+              //     iv: iv,
+              //     mode: CryptoJS.mode.CBC,
+              //   });
+              //   // console.log(test,key,iv);
+              //   js["feeds"].at(-1)["field" + j] = decrypted =
+              //     decrypted.toString(CryptoJS.enc.Utf8);
+                
+              // } catch (err) {
+              // } finally {
+              // }
 
           }
           
@@ -201,25 +203,25 @@ $(document).ready(function () {
           // cols[2].innerText = js["feeds"].at(-1)["field2"];
           // cols[3].innerText = js["feeds"].at(-1)["field3"];
           for (var j = 1; j <= 7; j++) {
-            try {
-              test = js["feeds"].at(-1)["field" + j].slice(2, -1).replace(/ /g, "+");
-            var key = "MySecretKeyesw39";
+            // try {
+            //   test = js["feeds"].at(-1)["field" + j].slice(2, -1).replace(/ /g, "+");
+            // var key = "MySecretKeyesw39";
 
-            var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
+            // var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
-            test = test.substring(24);
+            // test = test.substring(24);
 
-            key = CryptoJS.enc.Utf8.parse(key);
-            var decrypted = CryptoJS.AES.decrypt(test, key, {
-              iv: iv,
-              mode: CryptoJS.mode.CBC,
-            });
-            js["feeds"].at(-1)["field" + j] = decrypted = decrypted.toString(
-              CryptoJS.enc.Utf8
-            );
-            }
-            catch (err) { }
-            finally {}
+            // key = CryptoJS.enc.Utf8.parse(key);
+            // var decrypted = CryptoJS.AES.decrypt(test, key, {
+            //   iv: iv,
+            //   mode: CryptoJS.mode.CBC,
+            // });
+            // js["feeds"].at(-1)["field" + j] = decrypted = decrypted.toString(
+            //   CryptoJS.enc.Utf8
+            // );
+            // }
+            // catch (err) { }
+            // finally {}
             
           }
           for (var j = 1; j <= 7; j++) {
