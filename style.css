@@ -355,18 +355,6 @@ body {
 .toggle-menu.active span:after {
   top: 0;
   transform: rotate3d(0, 0, 1, 45deg);
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, 
@@ -375,10 +363,6 @@ pre, form, fieldset, input, textarea, p, blockquote, th, td {
   margin:0;} */
 
 /* fieldset, img {border:0} */
-
-
-
-
 
 
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
@@ -494,15 +478,6 @@ pre, form, fieldset, input, textarea, p, blockquote, th, td {
   top: 150px;
   opacity: 1;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -622,3 +597,44 @@ tbody
   background-color: #3f4e72;
 }
 
+
+
+	
+.callout {
+  position: fixed;
+  bottom: 35px;
+  right: 20px;
+  margin-left: 20px;
+  max-width: 300px;
+}
+
+.callout-header {
+  padding: 25px 15px;
+  background: rgb(48, 46, 46);
+  font-size: 30px;
+  color: white;
+}
+
+
+
+.callout-container {
+  padding: 15px;
+  background-color: rgb(158, 141, 96);
+  color: rgb(12, 12, 11)
+}
+
+
+
+.closebtn {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+.closebtn:hover {
+  color: lightgrey;
+}
