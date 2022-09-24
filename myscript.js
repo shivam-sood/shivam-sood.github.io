@@ -86,6 +86,25 @@ $(document).ready(function () {
                     
                     <td class='Click-here' style="color:yellow">ADL Fall</td> 
                     </tr>
+                                          <div class="callout">
+
+                      <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
+
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+                        <div class="callout-container">
+
+                          <p>An ADL Fall of User: ${k} has been detected at <a href="https://maps.google.com/?q=${js["feeds"][0]["field6"]}">Location</a> at <span id='datetime'></span>.</p>
+
+                          <script>
+                              var dt = new Date();
+                              document.getElementById('datetime').innerHTML += dt.getDate() + "\" + dt.getMonth() + "\" + dt.getYear() + "  " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() ;
+                          </script>
+
+                        </div>
+
+                      </div>
+                    </div>
                     `;
           } else {
             if (js["feeds"].at(-1)["field7"] == 2) {
@@ -93,12 +112,28 @@ $(document).ready(function () {
                       
                       <td class='Click-here' style="color:red">Fall</td> 
                       </tr>
+                      <div class="callout">
+
+                      <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
+
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+                        <div class="callout-container">
+
+                          <p>A Fall of User: ${k} has been detected at <a href="https://maps.google.com/?q=${js["feeds"][0]["field6"]}">Location</a> at <span id='datetime'></span>.</p>
+
+                          <script>
+                              var dt = new Date();
+                              document.getElementById('datetime').innerHTML += dt.getDate() + "\" + dt.getMonth() + "\" + dt.getYear() + "  " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() ;
+                          </script>
+
+                        </div>
+
+                      </div>
+                    </div>
                       
                       `;
-              //need to add notification
-              //
-              //
-              ///
+    
             } else {
               txt += `
                         
