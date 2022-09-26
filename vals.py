@@ -47,7 +47,7 @@ class AESCipher(object):
     def _unpad(s):
         return s[:-ord(s[len(s)-1:])]
 
-aes = AESCipher("OurSecretKeyesw1")
+aes = AESCipher("MySecretKeyesw39")
 print(aes.key)
 while 1:
     a = aes.encrypt(str(random.randrange(960,1020)/10))
@@ -57,6 +57,15 @@ while 1:
     e = aes.encrypt(str(random.randrange(950,991)/10))
     coord = aes.encrypt("{},{}".format(random.random() * 180 - 90, random.random()*360 - 180))
     stat = aes.encrypt(str(random.randrange(0,3)))
+
+
+    # a = (str(random.randrange(960,1020)/10))
+    # b = (str(random.randrange(60,101)))
+    # c = (str(random.randrange(950,991)/10))
+    # d = (str(random.randrange(950,991)/10))
+    # e = (str(random.randrange(950,991)/10))
+    # coord = ("{},{}".format(random.random() * 180 - 90, random.random()*360 - 180))
+    # stat = (str(random.randrange(0,3)))
     print('https://api.thingspeak.com/update?api_key=B2MH2CATLY7JVLHF&field1={}&field2={}&field3={}&field4={}&field5={}&field6={}&field7={}'.format(a,b,c,d,e,coord,stat))
     x = requests.get('https://api.thingspeak.com/update?api_key=B2MH2CATLY7JVLHF&field1={}&field2={}&field3={}&field4={}&field5={}&field6={}&field7={}'.format(a,b,c,d,e,coord,stat))
     

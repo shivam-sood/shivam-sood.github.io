@@ -34,36 +34,44 @@ $(document).ready(function () {
     document.getElementById("table").innerHTML = ``;
     var txt = "";
     for (k in esw) {
-      // console.log(k);
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           js = JSON.parse(xhttp.responseText);
           
             for (var j = 1; j <= 7; j++){
-              // try {
-              //   test = js["feeds"]
-              //     .at(-1)
-              //     ["field" + j].slice(2, -1)
-              //     .replace(/ /g, "+");
-              //   var key = "MySecretKeyesw39";
-              //   console.log(k,test);
-              //   var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
-
-              //   test = test.substring(24);
-
-              //   key = CryptoJS.enc.Utf8.parse(key);
-              //   var decrypted = CryptoJS.AES.decrypt(test, key, {
-              //     iv: iv,
-              //     mode: CryptoJS.mode.CBC,
-              //   });
-              //   // console.log(test,key,iv);
-              //   js["feeds"].at(-1)["field" + j] = decrypted =
-              //     decrypted.toString(CryptoJS.enc.Utf8);
+              try {
+                test = js["feeds"]
+                  .at(-1)
+                  ["field" + j].slice(2, -1)
+                  .replace(/ /g, "+");
                 
-              // } catch (err) {
-              // } finally {
-              // }
+                var key = "MySecretKeyesw39";
+                var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
+
+                test = test.substring(24);
+
+                key = CryptoJS.enc.Utf8.parse(key);
+                var decrypted = CryptoJS.AES.decrypt(test, key, {
+                  iv: iv,
+                  mode: CryptoJS.mode.CBC,
+                });
+
+                
+                decrypted = decrypted.toString(CryptoJS.enc.Utf8);
+                if (decrypted == "")
+                {
+                  
+                }
+                else
+                {
+                  js["feeds"].at(-1)["field" + j] = decrypted;
+                  }
+                
+              } catch (err) {
+
+              } finally {
+              }
 
           }
           
@@ -154,20 +162,18 @@ $(document).ready(function () {
             prev[k][i] = [js["feeds"].at(-1)["field" + (i + 1)]];
         }
       };
-      // console.log(esw[k]["thing"], k);
+
       xhttp.open("GET", esw[k]["thing"], false);
       xhttp.send();
     }
-    // console.log(esw);
-    // updateStarCount(postElement, data);
+
   });
-  // esw = JSON.parse(localStorage.getItem("esw"));
-  // console.log(esw);
+
   
 
 
   $(".close-btn, .bg-overlay").click(function () {
-    // console.log("SA");
+
     $(".custom-model-main").removeClass("model-open");
     $(".custom-model-main2").removeClass("model-open2");
     //   chart.destroy();
@@ -192,7 +198,6 @@ $(document).ready(function () {
 
   setInterval(() => {
     var rows = $("#table").find("tr");
-    // console.log(rows.length);
     for (var i = 0; i < rows.length; i++) {
       var cols = $(rows[i]).find("td");
       var xhttp = new XMLHttpRequest();
@@ -204,29 +209,37 @@ $(document).ready(function () {
           // cols[2].innerText = js["feeds"].at(-1)["field2"];
           // cols[3].innerText = js["feeds"].at(-1)["field3"];
           for (var j = 1; j <= 7; j++) {
-            // try {
-            //   test = js["feeds"].at(-1)["field" + j].slice(2, -1).replace(/ /g, "+");
-            // var key = "MySecretKeyesw39";
+            try {
+              test = js["feeds"]
+                .at(-1)
+                ["field" + j].slice(2, -1)
+                .replace(/ /g, "+");
 
-            // var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
+              var key = "MySecretKeyesw39";
+              
+              var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
-            // test = test.substring(24);
+              test = test.substring(24);
 
-            // key = CryptoJS.enc.Utf8.parse(key);
-            // var decrypted = CryptoJS.AES.decrypt(test, key, {
-            //   iv: iv,
-            //   mode: CryptoJS.mode.CBC,
-            // });
-            // js["feeds"].at(-1)["field" + j] = decrypted = decrypted.toString(
-            //   CryptoJS.enc.Utf8
-            // );
-            // }
-            // catch (err) { }
-            // finally {}
+              key = CryptoJS.enc.Utf8.parse(key);
+              var decrypted = CryptoJS.AES.decrypt(test, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+              });
+
+
+              decrypted = decrypted.toString(CryptoJS.enc.Utf8);
+              if (decrypted == "") {
+              } else {
+                js["feeds"].at(-1)["field" + j] = decrypted;
+              }
+            } catch (err) {
+
+            } finally {
+            }
             
           }
           for (var j = 1; j <= 7; j++) {
-            // console.log(cols[j]);
 
 
             if (j == 7) {
@@ -245,7 +258,7 @@ $(document).ready(function () {
               cols[6].firstChild.innerHTML = js["feeds"].at(-1)["field6"];
               cols[6].firstChild.href =
                 "https://maps.google.com/?q=" + js["feeds"].at(-1)["field6"];
-              // console.log(cols[6]);
+  
             }
             else {
               cols[j].innerText = js["feeds"].at(-1)["field" + j];
@@ -258,14 +271,9 @@ $(document).ready(function () {
               prev[rows[i].firstElementChild.innerText][j - 1].shift();
             }
           }
-          // console.log(js["feeds"].at(-1)["field7"], js["feeds"].at(-1)["field7"] == 1);
 
-
-          // cols[7].
-          // console.log(cols[7]);
         }
       };
-      console.log(rows[i].firstElementChild.innerText);
       xhttp.open(
         "GET",
         esw[rows[i].firstElementChild.innerText]["thing"],
@@ -291,7 +299,7 @@ $(document).ready(function () {
 
     if (this.cellIndex == 0) {
       $(".custom-model-main2").addClass("model-open2");
-      // console.log(this.innerHTML);
+      
       document.getElementById("info").innerHTML = `
             Name: ${esw[this.innerHTML]["name"]}<br>
             Age:${esw[this.innerHTML]["age"]}<br>
@@ -299,7 +307,6 @@ $(document).ready(function () {
             Job:${esw[this.innerHTML]["job"]}<br>
             Thingspeak url:${esw[this.innerHTML]["thing"]}<br>
             `;
-      // console.log($("#info"));
       return;
     }
     else {
@@ -310,15 +317,10 @@ $(document).ready(function () {
     //   .then((response) => response.json())
     //   .then((data) => {
     // chart.data.labels.push(0);
-    console.log(this.parentElement.cells[0].innerHTML);
     for (var i = 0; i < prev[this.parentElement.cells[0].innerHTML][this.cellIndex - 1].length; i++) {
 
       chart.data.labels.push(i * 15);
-      // console.log(
-      //   prev[this.parentElement.cells[0].innerHTML][
-      //     this.cellIndex - 1
-      //   ]
-      // );
+
       chart.data.datasets.forEach((dataset) => {
         dataset.data.push(
           prev[this.parentElement.cells[0].innerHTML][
@@ -330,35 +332,43 @@ $(document).ready(function () {
     }
     chart.update();
     // });
-    // console.log(this);
     interv = setInterval(() => {
       fetch(esw[this.parentElement.cells[0].innerHTML]["thing"])
         .then((response) => response.json())
         .then((data) => {
-          // for (var j = 1; j <= 7; j++) {
-            test = data["feeds"].at(-1)["field" + +this.cellIndex]
-              .slice(2, -1)
-              .replace(/ /g, "+");
-            var key = "MySecretKeyesw39";
 
-            var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
-            // var iv = CryptoJS.enc.Utf8.parse(
-            //   "d\xae\xf2\x02\xb8\xae>\x0f\xe6f\xe2\x80\xdc\xb1e\xd4"
-            // );
+            
+            
 
-            // console.log(j,test.substring(0, 24), test.substring(24));
-            // console.log(j, atob(test.substring(0, 24)), test.substring(24),iv);
-            test = test.substring(24);
+            
+            
+            // data["feeds"].at(-1)["field" + +this.cellIndex] = decrypted =
+            //   decrypted.toString(CryptoJS.enc.Utf8);
+            try {
+              test = data["feeds"]
+                .at(-1)
+                ["field" + +this.cellIndex].slice(2, -1)
+                .replace(/ /g, "+");
 
-            key = CryptoJS.enc.Utf8.parse(key);
-            var decrypted = CryptoJS.AES.decrypt(test, key, {
-              iv: iv,
-              mode: CryptoJS.mode.CBC,
-            });
-            data["feeds"].at(-1)["field" + +this.cellIndex] = decrypted =
-              decrypted.toString(CryptoJS.enc.Utf8);
-            // console.log(decrypted);
-          // }
+              var key = "MySecretKeyesw39";
+              var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
+
+              test = test.substring(24);
+
+              key = CryptoJS.enc.Utf8.parse(key);
+              var decrypted = CryptoJS.AES.decrypt(test, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+              });
+
+              decrypted = decrypted.toString(CryptoJS.enc.Utf8);
+              if (decrypted == "") {
+              } else {
+                data["feeds"].at(-1)["field" + +this.cellIndex] = decrypted;
+              }
+            } catch (err) {
+            } finally {
+            }
           chart.data.labels.push(chart.data.labels.at(-1) + 15);
           chart.data.datasets.forEach((dataset) => {
             dataset.data.push(data["feeds"].at(-1)["field" + this.cellIndex]);
