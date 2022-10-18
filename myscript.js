@@ -217,12 +217,13 @@ $(document).ready(function () {
             } finally {
             }
           }
+          document.getElementById("notif").innerHTML = "";
           for (var j = 1; j <= 7; j++) {
             if (j == 7) {
               if (js["feeds"].at(-1)["field7"] == "2") {
                 cols[7].innerText = "ADL Fall";
                 cols[7].attributes.style.value = `color:yellow`;
-                document.getElementById("notif").innerHTML = `<div class="callout">
+                document.getElementById("notif").innerHTML += `<div class="callout">
 
                       <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
 
@@ -248,7 +249,7 @@ $(document).ready(function () {
                 cols[7].attributes.style.value = `color:red`;
                 document.getElementById(
                   "notif"
-                ).innerHTML = `<div class="callout">
+                ).innerHTML += `<div class="callout">
 
                       <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
 
