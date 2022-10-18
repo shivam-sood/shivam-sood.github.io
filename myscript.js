@@ -1,4 +1,3 @@
-
 var interv;
 var prev = {};
 // alert("hello");
@@ -28,7 +27,7 @@ $(document).ready(function () {
       // },
     },
   });
-  const rrr = ref1(database, "esw/" );
+  const rrr = ref1(database, "esw/");
   onValue1(rrr, (snapshot) => {
     esw = snapshot.val();
     document.getElementById("table").innerHTML = ``;
@@ -38,44 +37,34 @@ $(document).ready(function () {
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
           js = JSON.parse(xhttp.responseText);
-          
-            for (var j = 1; j <= 7; j++){
-              try {
-                test = js["feeds"]
-                  .at(-1)
-                  ["field" + j].slice(2, -1)
-                  .replace(/ /g, "+");
-                
-                var key = "MySecretKeyesw39";
-                var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
-                test = test.substring(24);
+          for (var j = 1; j <= 7; j++) {
+            try {
+              test = js["feeds"]
+                .at(-1)
+                ["field" + j].slice(2, -1)
+                .replace(/ /g, "+");
 
-                key = CryptoJS.enc.Utf8.parse(key);
-                var decrypted = CryptoJS.AES.decrypt(test, key, {
-                  iv: iv,
-                  mode: CryptoJS.mode.CBC,
-                });
+              var key = "MySecretKeyesw39";
+              var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
-                
-                decrypted = decrypted.toString(CryptoJS.enc.Utf8);
-                if (decrypted == "")
-                {
-                  
-                }
-                else
-                {
-                  js["feeds"].at(-1)["field" + j] = decrypted;
-                  }
-                
-              } catch (err) {
+              test = test.substring(24);
 
-              } finally {
+              key = CryptoJS.enc.Utf8.parse(key);
+              var decrypted = CryptoJS.AES.decrypt(test, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+              });
+
+              decrypted = decrypted.toString(CryptoJS.enc.Utf8);
+              if (decrypted == "") {
+              } else {
+                js["feeds"].at(-1)["field" + j] = decrypted;
               }
-
+            } catch (err) {
+            } finally {
+            }
           }
-          
-          
 
           txt += `
                   <tr>
@@ -94,8 +83,8 @@ $(document).ready(function () {
           if (js["feeds"].at(-1)["field7"] == 2) {
             txt += `
              <td class='Click-here' style="color:yellow">ADL Fall</td> 
-                    </tr>
-                    <div class="callout">
+                    </tr>`;
+                 document.getElementById("notif").innerHTML = `<div class="callout">
 
                       <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
 
@@ -120,8 +109,8 @@ $(document).ready(function () {
             if (js["feeds"].at(-1)["field7"] == 0) {
               txt += `
                <td class='Click-here' style="color:red">Fall</td> 
-                      </tr>
-                      <div class="callout">
+                      </tr>`
+                document.getElementById("notif").innerHTML =`<div class="callout">
 
                       <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
 
@@ -147,8 +136,7 @@ $(document).ready(function () {
               //
               //
               ///
-            }
-            else {
+            } else {
               txt += `
                         
                         <td class='Click-here' style="color:aquamarine">ADL</td> 
@@ -166,14 +154,9 @@ $(document).ready(function () {
       xhttp.open("GET", esw[k]["thing"], false);
       xhttp.send();
     }
-
   });
 
-  
-
-
   $(".close-btn, .bg-overlay").click(function () {
-
     $(".custom-model-main").removeClass("model-open");
     $(".custom-model-main2").removeClass("model-open2");
     //   chart.destroy();
@@ -189,12 +172,11 @@ $(document).ready(function () {
     $(this).toggleClass("active");
     $("#menu").toggleClass("open");
   });
-    $(".toggle-menu2").click(function () {
-      // alert("HELLo");
-      $(".toggle-menu").toggleClass("active");
-      $("#menu").toggleClass("open");
-    });
-
+  $(".toggle-menu2").click(function () {
+    // alert("HELLo");
+    $(".toggle-menu").toggleClass("active");
+    $("#menu").toggleClass("open");
+  });
 
   setInterval(() => {
     var rows = $("#table").find("tr");
@@ -203,7 +185,6 @@ $(document).ready(function () {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-
           js = JSON.parse(xhttp.responseText);
           // cols[1].innerText = js["feeds"].at(-1)["field1"];
           // cols[2].innerText = js["feeds"].at(-1)["field2"];
@@ -216,7 +197,7 @@ $(document).ready(function () {
                 .replace(/ /g, "+");
 
               var key = "MySecretKeyesw39";
-              
+
               var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
               test = test.substring(24);
@@ -227,42 +208,78 @@ $(document).ready(function () {
                 mode: CryptoJS.mode.CBC,
               });
 
-
               decrypted = decrypted.toString(CryptoJS.enc.Utf8);
               if (decrypted == "") {
               } else {
                 js["feeds"].at(-1)["field" + j] = decrypted;
               }
             } catch (err) {
-
             } finally {
             }
-            
           }
           for (var j = 1; j <= 7; j++) {
-
-
             if (j == 7) {
               if (js["feeds"].at(-1)["field7"] == "2") {
                 cols[7].innerText = "ADL Fall";
                 cols[7].attributes.style.value = `color:yellow`;
+                document.getElementById("notif").innerHTML = `<div class="callout">
+
+                      <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
+
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+                        <div class="callout-container">
+
+                          <p>An ADL Fall of User: ${k} has been detected at <a href="https://maps.google.com/?q=${cols[6].innerText}">Location</a> at <span id='datetime'></span>.</p>
+
+                          <script>
+                              var dt = new Date();
+                              document.getElementById('datetime').innerHTML += dt.getDate() + "\" + dt.getMonth() + "\" + dt.getYear() + "  " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() ;
+                          </script>
+
+                        </div>
+
+                      </div>
+                    </div>
+                   
+                    `;
               } else if (js["feeds"].at(-1)["field7"] == "0") {
                 cols[7].innerText = "Fall";
                 cols[7].attributes.style.value = `color:red`;
+                document.getElementById(
+                  "notif"
+                ).innerHTML = `<div class="callout">
+
+                      <div class="callout-header" , style="background-color:red,color:black;">Fall Detected</div>
+
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+                        <div class="callout-container">
+
+                          <p>An Fall of User: ${k} has been detected at <a href="https://maps.google.com/?q=${cols[6].innerText}">Location</a> at <span id='datetime'></span>.</p>
+
+                          <script>
+                              var dt = new Date();
+                              document.getElementById('datetime').innerHTML += dt.getDate() + "\" + dt.getMonth() + "\" + dt.getYear() + "  " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds() ;
+                          </script>
+
+                        </div>
+
+                      </div>
+                    </div>
+                     
+                      
+                      `;
               } else {
-                // cols[7].innerText = "ADL";
-                // cols[7].attributes.style.value = `color:aquamarine`;
+                cols[7].innerText = "ADL";
+                cols[7].attributes.style.value = `color:aquamarine`;
               }
-            }
-            else if (j == 6) {
+            } else if (j == 6) {
               cols[6].firstChild.innerHTML = js["feeds"].at(-1)["field6"];
               cols[6].firstChild.href =
                 "https://maps.google.com/?q=" + js["feeds"].at(-1)["field6"];
-  
-            }
-            else {
+            } else {
               cols[j].innerText = js["feeds"].at(-1)["field" + j];
-
             }
             prev[rows[i].firstElementChild.innerText][j - 1].push(
               js["feeds"].at(-1)["field" + j]
@@ -271,7 +288,6 @@ $(document).ready(function () {
               prev[rows[i].firstElementChild.innerText][j - 1].shift();
             }
           }
-
         }
       };
       xhttp.open(
@@ -280,17 +296,8 @@ $(document).ready(function () {
         false
       );
       xhttp.send();
-
-
     }
   }, 15000);
-
-
-
-
-
-
-
 
   $(document.body).on("click", ".Click-here", function () {
     // chart.destroy();
@@ -299,7 +306,7 @@ $(document).ready(function () {
 
     if (this.cellIndex == 0) {
       $(".custom-model-main2").addClass("model-open2");
-      
+
       document.getElementById("info").innerHTML = `
             Name: ${esw[this.innerHTML]["name"]}<br>
             Age:${esw[this.innerHTML]["age"]}<br>
@@ -308,8 +315,7 @@ $(document).ready(function () {
             Thingspeak url:${esw[this.innerHTML]["thing"]}<br>
             `;
       return;
-    }
-    else {
+    } else {
       $(".custom-model-main").addClass("model-open");
       // $("pop-up-content-wrap").innerHTML = "<canvas id='myChart' style='width:100%;max-width:600px'></canvas>"
     }
@@ -317,17 +323,18 @@ $(document).ready(function () {
     //   .then((response) => response.json())
     //   .then((data) => {
     // chart.data.labels.push(0);
-    for (var i = 0; i < prev[this.parentElement.cells[0].innerHTML][this.cellIndex - 1].length; i++) {
-
+    for (
+      var i = 0;
+      i <
+      prev[this.parentElement.cells[0].innerHTML][this.cellIndex - 1].length;
+      i++
+    ) {
       chart.data.labels.push(i * 15);
 
       chart.data.datasets.forEach((dataset) => {
         dataset.data.push(
-          prev[this.parentElement.cells[0].innerHTML][
-          this.cellIndex - 1
-          ][i]
+          prev[this.parentElement.cells[0].innerHTML][this.cellIndex - 1][i]
         );
-
       });
     }
     chart.update();
@@ -336,39 +343,33 @@ $(document).ready(function () {
       fetch(esw[this.parentElement.cells[0].innerHTML]["thing"])
         .then((response) => response.json())
         .then((data) => {
+          // data["feeds"].at(-1)["field" + +this.cellIndex] = decrypted =
+          //   decrypted.toString(CryptoJS.enc.Utf8);
+          try {
+            test = data["feeds"]
+              .at(-1)
+              ["field" + +this.cellIndex].slice(2, -1)
+              .replace(/ /g, "+");
 
-            
-            
+            var key = "MySecretKeyesw39";
+            var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
 
-            
-            
-            // data["feeds"].at(-1)["field" + +this.cellIndex] = decrypted =
-            //   decrypted.toString(CryptoJS.enc.Utf8);
-            try {
-              test = data["feeds"]
-                .at(-1)
-                ["field" + +this.cellIndex].slice(2, -1)
-                .replace(/ /g, "+");
+            test = test.substring(24);
 
-              var key = "MySecretKeyesw39";
-              var iv = CryptoJS.enc.Utf8.parse(atob(test.substring(0, 24)));
+            key = CryptoJS.enc.Utf8.parse(key);
+            var decrypted = CryptoJS.AES.decrypt(test, key, {
+              iv: iv,
+              mode: CryptoJS.mode.CBC,
+            });
 
-              test = test.substring(24);
-
-              key = CryptoJS.enc.Utf8.parse(key);
-              var decrypted = CryptoJS.AES.decrypt(test, key, {
-                iv: iv,
-                mode: CryptoJS.mode.CBC,
-              });
-
-              decrypted = decrypted.toString(CryptoJS.enc.Utf8);
-              if (decrypted == "") {
-              } else {
-                data["feeds"].at(-1)["field" + +this.cellIndex] = decrypted;
-              }
-            } catch (err) {
-            } finally {
+            decrypted = decrypted.toString(CryptoJS.enc.Utf8);
+            if (decrypted == "") {
+            } else {
+              data["feeds"].at(-1)["field" + +this.cellIndex] = decrypted;
             }
+          } catch (err) {
+          } finally {
+          }
           chart.data.labels.push(chart.data.labels.at(-1) + 15);
           chart.data.datasets.forEach((dataset) => {
             dataset.data.push(data["feeds"].at(-1)["field" + this.cellIndex]);
@@ -377,6 +378,4 @@ $(document).ready(function () {
         });
     }, 15000);
   });
-
 });
-
